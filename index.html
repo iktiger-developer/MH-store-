@@ -63,6 +63,18 @@
         .products-page.active {
             display: block;
         }
+        .login-modal {
+            display: none;
+        }
+        .login-modal.active {
+            display: flex;
+        }
+        .mobile-menu {
+            display: none;
+        }
+        .mobile-menu.active {
+            display: block;
+        }
         @keyframes floating {
             0% { transform: translateY(0px); }
             50% { transform: translateY(-15px); }
@@ -71,6 +83,37 @@
     </style>
 </head>
 <body class="bg-deepblack text-white font-body">
+    <!-- Admin Login Modal -->
+    <div id="admin-login-modal" class="login-modal fixed inset-0 bg-black bg-opacity-50 z-50 items-center justify-center">
+        <div class="bg-deepblack border border-gold/20 rounded-lg p-8 w-96 max-w-full mx-4">
+            <div class="text-center mb-6">
+                <h3 class="text-2xl font-sans font-bold text-gold mb-2">Admin Login</h3>
+                <div class="w-16 h-1 bg-accentred mx-auto"></div>
+            </div>
+            <form id="admin-login-form" class="space-y-4">
+                <div>
+                    <label for="admin-username" class="block text-sm font-medium text-white mb-1">Username</label>
+                    <input type="text" id="admin-username" class="w-full bg-white/5 border border-gold/20 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-gold" required>
+                </div>
+                <div>
+                    <label for="admin-password" class="block text-sm font-medium text-white mb-1">Password</label>
+                    <input type="password" id="admin-password" class="w-full bg-white/5 border border-gold/20 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-gold" required>
+                </div>
+                <div class="flex space-x-4 pt-4">
+                    <button type="button" onclick="hideAdminLogin()" class="flex-1 border-2 border-gold text-gold hover:bg-gold hover:text-deepblack font-bold py-2 px-4 rounded-full transition-all duration-300">
+                        Cancel
+                    </button>
+                    <button type="submit" class="flex-1 bg-accentred hover:bg-accentred/90 text-white font-bold py-2 px-4 rounded-full transition-all duration-300">
+                        Login
+                    </button>
+                </div>
+            </form>
+            <div class="mt-4 text-center">
+                <p class="text-white/60 text-sm">Default credentials: admin / admin123</p>
+            </div>
+        </div>
+    </div>
+
     <!-- Navigation -->
     <nav class="bg-deepblack border-b border-gold/10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -86,7 +129,7 @@
                             <a href="#about" class="text-white hover:text-gold px-3 py-2 rounded-md text-sm font-medium" onclick="showHomePage()">Our Story</a>
                             <a href="#contact" class="text-white hover:text-gold px-3 py-2 rounded-md text-sm font-medium" onclick="showHomePage()">Contact</a>
                             <a href="#" class="text-white hover:text-gold px-3 py-2 rounded-md text-sm font-medium" onclick="showAllProductsPage()">All Fragrances</a>
-                            <a href="#admin" class="text-white hover:text-gold px-3 py-2 rounded-md text-sm font-medium" onclick="showAdminPanel()">Admin</a>
+                            <a href="#admin" class="text-white hover:text-gold px-3 py-2 rounded-md text-sm font-medium" onclick="showAdminLogin()">Admin</a>
                         </div>
                     </div>
                 </div>
@@ -98,10 +141,22 @@
                     <button class="ml-4 p-1 rounded-full text-white hover:text-gold focus:outline-none">
                         <i data-feather="user"></i>
                     </button>
-                    <button class="md:hidden ml-4 p-1 rounded-full text-white hover:text-gold focus:outline-none">
+                    <button class="md:hidden ml-4 p-1 rounded-full text-white hover:text-gold focus:outline-none" onclick="toggleMobileMenu()">
                         <i data-feather="menu"></i>
                     </button>
                 </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="mobile-menu md:hidden bg-deepblack border-t border-gold/10">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#" class="text-gold block px-3 py-2 rounded-md text-base font-medium" onclick="showHomePage(); toggleMobileMenu();">Home</a>
+                <a href="#products" class="text-white hover:text-gold block px-3 py-2 rounded-md text-base font-medium" onclick="showHomePage(); toggleMobileMenu();">Fragrances</a>
+                <a href="#about" class="text-white hover:text-gold block px-3 py-2 rounded-md text-base font-medium" onclick="showHomePage(); toggleMobileMenu();">Our Story</a>
+                <a href="#contact" class="text-white hover:text-gold block px-3 py-2 rounded-md text-base font-medium" onclick="showHomePage(); toggleMobileMenu();">Contact</a>
+                <a href="#" class="text-white hover:text-gold block px-3 py-2 rounded-md text-base font-medium" onclick="showAllProductsPage(); toggleMobileMenu();">All Fragrances</a>
+                <a href="#admin" class="text-white hover:text-gold block px-3 py-2 rounded-md text-base font-medium" onclick="showAdminLogin(); toggleMobileMenu();">Admin</a>
             </div>
         </div>
     </nav>
@@ -235,7 +290,7 @@
                 <button onclick="showHomePage()" class="mt-4 text-white hover:text-gold">← Back to Home</button>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div id="all-products-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <!-- Products will be dynamically loaded here -->
             </div>
         </div>
@@ -247,7 +302,10 @@
             <div class="text-center mb-10">
                 <h2 class="text-3xl font-sans font-bold text-gold mb-4">Admin Panel</h2>
                 <div class="w-20 h-1 bg-accentred mx-auto"></div>
-                <button onclick="showHomePage()" class="mt-4 text-white hover:text-gold">← Back to Store</button>
+                <div class="flex justify-center space-x-4 mt-4">
+                    <button onclick="showHomePage()" class="text-white hover:text-gold">← Back to Store</button>
+                    <button onclick="logoutAdmin()" class="text-accentred hover:text-accentred/90">Logout</button>
+                </div>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
@@ -341,6 +399,7 @@
             </div>
         </section>
 
+        <!-- Rest of your existing sections (About, Testimonials, Contact, etc.) -->
         <!-- About Section -->
         <section id="about" class="py-20 bg-deepblack/95">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -465,7 +524,7 @@
                                     <i data-feather="phone" class="text-gold h-5 w-5"></i>
                                 </div>
                                 <div class="ml-3">
-                                    <p class="text-white/80">+92 349 55872021</p>
+                                    <p class="text-white/80">+92 349 5587</p>
                                 </div>
                             </div>
                             <div class="flex items-start">
@@ -580,13 +639,42 @@
     </div>
 
     <!-- WhatsApp Floating Button -->
-    <a href="https://wa.me/923495587202" class="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white rounded-full p-4 shadow-lg transition-all duration-300 transform hover:scale-110 z-50">
+    <a href="https://wa.me/9295587202" class="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white rounded-full p-4 shadow-lg transition-all duration-300 transform hover:scale-110 z-50">
         <i data-feather="message-circle" class="h-6 w-6"></i>
     </a>
 
     <script>
         feather.replace();
         
+        // Admin authentication
+        let isAdminLoggedIn = false;
+        const ADMIN_CREDENTIALS = {
+            username: "admin",
+            password: "admin123"
+        };
+
+        // Mobile menu functionality
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('active');
+        }
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const hamburgerButton = document.querySelector('button[onclick="toggleMobileMenu()"]');
+            
+            if (!mobileMenu.contains(event.target) && !hamburgerButton.contains(event.target)) {
+                mobileMenu.classList.remove('active');
+            }
+        });
+
+        // Close mobile menu when switching pages
+        function closeMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.remove('active');
+        }
+
         // Cart functionality
         let cart = [];
         let products = [
@@ -640,12 +728,46 @@
             }
         ];
 
+        // Admin login functions
+        function showAdminLogin() {
+            document.getElementById('admin-login-modal').classList.add('active');
+            closeMobileMenu();
+        }
+
+        function hideAdminLogin() {
+            document.getElementById('admin-login-modal').classList.remove('active');
+        }
+
+        function logoutAdmin() {
+            isAdminLoggedIn = false;
+            showHomePage();
+            alert('Logged out successfully!');
+        }
+
+        // Admin login form submission
+        document.getElementById('admin-login-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const username = document.getElementById('admin-username').value;
+            const password = document.getElementById('admin-password').value;
+
+            if (username === ADMIN_CREDENTIALS.username && password === ADMIN_CREDENTIALS.password) {
+                isAdminLoggedIn = true;
+                hideAdminLogin();
+                showAdminPanel();
+                alert('Login successful!');
+            } else {
+                alert('Invalid credentials! Please try again.');
+            }
+        });
+
         // Page navigation functions
         function showHomePage() {
             document.getElementById('home-page').style.display = 'block';
             document.getElementById('products-page').classList.remove('active');
             document.getElementById('checkout-page').classList.remove('active');
             document.getElementById('admin-panel').classList.remove('active');
+            hideAdminLogin();
+            closeMobileMenu();
             window.scrollTo(0, 0);
         }
 
@@ -654,6 +776,8 @@
             document.getElementById('products-page').classList.add('active');
             document.getElementById('checkout-page').classList.remove('active');
             document.getElementById('admin-panel').classList.remove('active');
+            hideAdminLogin();
+            closeMobileMenu();
             renderAllProducts();
             window.scrollTo(0, 0);
         }
@@ -667,16 +791,24 @@
             document.getElementById('products-page').classList.remove('active');
             document.getElementById('checkout-page').classList.add('active');
             document.getElementById('admin-panel').classList.remove('active');
+            hideAdminLogin();
+            closeMobileMenu();
             updateCheckoutDisplay();
             toggleCart(); // Close cart sidebar
             window.scrollTo(0, 0);
         }
 
         function showAdminPanel() {
+            if (!isAdminLoggedIn) {
+                showAdminLogin();
+                return;
+            }
             document.getElementById('home-page').style.display = 'none';
             document.getElementById('products-page').classList.remove('active');
             document.getElementById('checkout-page').classList.remove('active');
             document.getElementById('admin-panel').classList.add('active');
+            hideAdminLogin();
+            closeMobileMenu();
             renderAdminProducts();
             window.scrollTo(0, 0);
         }
@@ -713,7 +845,7 @@
 
         // Render all products on products page
         function renderAllProducts() {
-            const container = document.querySelector('#products-page .grid');
+            const container = document.getElementById('all-products-container');
             container.innerHTML = products.map(product => `
                 <div class="product-card bg-white/5 backdrop-blur-sm border border-gold/20 rounded-lg overflow-hidden transition-all duration-300">
                     <div class="relative h-64">
