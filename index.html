@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MH Online Khushbo Store </title>
+    <title>MH Khushbo & online Store </title>
     <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -23,68 +24,95 @@
             }
         }
     </script>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap"
+        rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
     <script src="https://unpkg.com/feather-icons"></script>
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
     <style>
         .hero-gradient {
-            background: linear-gradient(135deg, rgba(18,18,18,0.9) 0%, rgba(255,215,0,0.4) 100%);
+            background: linear-gradient(135deg, rgba(18, 18, 18, 0.9) 0%, rgba(255, 215, 0, 0.4) 100%);
         }
+
         .product-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
         }
+
         .floating {
             animation: floating 6s ease-in-out infinite;
         }
+
         .admin-panel {
             display: none;
         }
+
         .admin-panel.active {
             display: block;
         }
+
         .cart-sidebar {
             transform: translateX(100%);
             transition: transform 0.3s ease-in-out;
         }
+
         .cart-sidebar.active {
             transform: translateX(0);
         }
+
         .checkout-page {
             display: none;
         }
+
         .checkout-page.active {
             display: block;
         }
+
         .products-page {
             display: none;
         }
+
         .products-page.active {
             display: block;
         }
+
         .login-modal {
             display: none;
         }
+
         .login-modal.active {
             display: flex;
         }
+
         .mobile-menu {
             display: none;
         }
+
         .mobile-menu.active {
             display: block;
         }
+
         @keyframes floating {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-            100% { transform: translateY(0px); }
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
         }
     </style>
 </head>
+
 <body class="bg-deepblack text-white font-body">
     <!-- Admin Login Modal -->
-    <div id="admin-login-modal" class="login-modal fixed inset-0 bg-black bg-opacity-50 z-50 items-center justify-center">
+    <div id="admin-login-modal"
+        class="login-modal fixed inset-0 bg-black bg-opacity-50 z-50 items-center justify-center">
         <div class="bg-deepblack border border-gold/20 rounded-lg p-8 w-96 max-w-full mx-4">
             <div class="text-center mb-6">
                 <h3 class="text-2xl font-sans font-bold text-gold mb-2">Admin Login</h3>
@@ -93,17 +121,23 @@
             <form id="admin-login-form" class="space-y-4">
                 <div>
                     <label for="admin-username" class="block text-sm font-medium text-white mb-1">Username</label>
-                    <input type="text" id="admin-username" class="w-full bg-white/5 border border-gold/20 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-gold" required>
+                    <input type="text" id="admin-username"
+                        class="w-full bg-white/5 border border-gold/20 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-gold"
+                        required>
                 </div>
                 <div>
                     <label for="admin-password" class="block text-sm font-medium text-white mb-1">Password</label>
-                    <input type="password" id="admin-password" class="w-full bg-white/5 border border-gold/20 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-gold" required>
+                    <input type="password" id="admin-password"
+                        class="w-full bg-white/5 border border-gold/20 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-gold"
+                        required>
                 </div>
                 <div class="flex space-x-4 pt-4">
-                    <button type="button" onclick="hideAdminLogin()" class="flex-1 border-2 border-gold text-gold hover:bg-gold hover:text-deepblack font-bold py-2 px-4 rounded-full transition-all duration-300">
+                    <button type="button" onclick="hideAdminLogin()"
+                        class="flex-1 border-2 border-gold text-gold hover:bg-gold hover:text-deepblack font-bold py-2 px-4 rounded-full transition-all duration-300">
                         Cancel
                     </button>
-                    <button type="submit" class="flex-1 bg-accentred hover:bg-accentred/90 text-white font-bold py-2 px-4 rounded-full transition-all duration-300">
+                    <button type="submit"
+                        class="flex-1 bg-accentred hover:bg-accentred/90 text-white font-bold py-2 px-4 rounded-full transition-all duration-300">
                         Login
                     </button>
                 </div>
@@ -120,28 +154,39 @@
             <div class="flex justify-between h-16 items-center">
                 <div class="flex items-center">
                     <div class="flex-shrink-0">
-                        <span class="text-gold font-sans text-2xl font-bold">MH Online Khushbo Store</span>
+                        <span class="text-gold font-sans text-2xl font-bold">MH Khushbo & online Store</span>
                     </div>
                     <div class="hidden md:block">
                         <div class="ml-10 flex items-baseline space-x-8">
-                            <a href="#" class="text-gold hover:text-white px-3 py-2 rounded-md text-sm font-medium" onclick="showHomePage()">Home</a>
-                            <a href="#products" class="text-white hover:text-gold px-3 py-2 rounded-md text-sm font-medium" onclick="showHomePage()">Fragrances</a>
-                            <a href="#about" class="text-white hover:text-gold px-3 py-2 rounded-md text-sm font-medium" onclick="showHomePage()">Our Story</a>
-                            <a href="#contact" class="text-white hover:text-gold px-3 py-2 rounded-md text-sm font-medium" onclick="showHomePage()">Contact</a>
-                            <a href="#" class="text-white hover:text-gold px-3 py-2 rounded-md text-sm font-medium" onclick="showAllProductsPage()">All Fragrances</a>
-                            <a href="#admin" class="text-white hover:text-gold px-3 py-2 rounded-md text-sm font-medium" onclick="showAdminLogin()">Admin</a>
+                            <a href="#" class="text-gold hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                                onclick="showHomePage()">Home</a>
+                            <a href="#products"
+                                class="text-white hover:text-gold px-3 py-2 rounded-md text-sm font-medium"
+                                onclick="showHomePage()">Fragrances</a>
+                            <a href="#about" class="text-white hover:text-gold px-3 py-2 rounded-md text-sm font-medium"
+                                onclick="showHomePage()">Our Story</a>
+                            <a href="#contact"
+                                class="text-white hover:text-gold px-3 py-2 rounded-md text-sm font-medium"
+                                onclick="showHomePage()">Contact</a>
+                            <a href="#" class="text-white hover:text-gold px-3 py-2 rounded-md text-sm font-medium"
+                                onclick="showAllProductsPage()">All Fragrances</a>
+                            <a href="#admin" class="text-white hover:text-gold px-3 py-2 rounded-md text-sm font-medium"
+                                onclick="showAdminLogin()">Admin</a>
                         </div>
                     </div>
                 </div>
                 <div class="flex items-center">
-                    <button class="p-1 rounded-full text-white hover:text-gold focus:outline-none relative" onclick="toggleCart()">
+                    <button class="p-1 rounded-full text-white hover:text-gold focus:outline-none relative"
+                        onclick="toggleCart()">
                         <i data-feather="shopping-cart"></i>
-                        <span id="cart-count" class="absolute -top-2 -right-2 bg-accentred text-white rounded-full text-xs w-5 h-5 flex items-center justify-center">0</span>
+                        <span id="cart-count"
+                            class="absolute -top-2 -right-2 bg-accentred text-white rounded-full text-xs w-5 h-5 flex items-center justify-center">0</span>
                     </button>
                     <button class="ml-4 p-1 rounded-full text-white hover:text-gold focus:outline-none">
                         <i data-feather="user"></i>
                     </button>
-                    <button class="md:hidden ml-4 p-1 rounded-full text-white hover:text-gold focus:outline-none" onclick="toggleMobileMenu()">
+                    <button class="md:hidden ml-4 p-1 rounded-full text-white hover:text-gold focus:outline-none"
+                        onclick="toggleMobileMenu()">
                         <i data-feather="menu"></i>
                     </button>
                 </div>
@@ -151,18 +196,25 @@
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="mobile-menu md:hidden bg-deepblack border-t border-gold/10">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="#" class="text-gold block px-3 py-2 rounded-md text-base font-medium" onclick="showHomePage(); toggleMobileMenu();">Home</a>
-                <a href="#products" class="text-white hover:text-gold block px-3 py-2 rounded-md text-base font-medium" onclick="showHomePage(); toggleMobileMenu();">Fragrances</a>
-                <a href="#about" class="text-white hover:text-gold block px-3 py-2 rounded-md text-base font-medium" onclick="showHomePage(); toggleMobileMenu();">Our Story</a>
-                <a href="#contact" class="text-white hover:text-gold block px-3 py-2 rounded-md text-base font-medium" onclick="showHomePage(); toggleMobileMenu();">Contact</a>
-                <a href="#" class="text-white hover:text-gold block px-3 py-2 rounded-md text-base font-medium" onclick="showAllProductsPage(); toggleMobileMenu();">All Fragrances</a>
-                <a href="#admin" class="text-white hover:text-gold block px-3 py-2 rounded-md text-base font-medium" onclick="showAdminLogin(); toggleMobileMenu();">Admin</a>
+                <a href="#" class="text-gold block px-3 py-2 rounded-md text-base font-medium"
+                    onclick="showHomePage(); toggleMobileMenu();">Home</a>
+                <a href="#products" class="text-white hover:text-gold block px-3 py-2 rounded-md text-base font-medium"
+                    onclick="showHomePage(); toggleMobileMenu();">Fragrances</a>
+                <a href="#about" class="text-white hover:text-gold block px-3 py-2 rounded-md text-base font-medium"
+                    onclick="showHomePage(); toggleMobileMenu();">Our Story</a>
+                <a href="#contact" class="text-white hover:text-gold block px-3 py-2 rounded-md text-base font-medium"
+                    onclick="showHomePage(); toggleMobileMenu();">Contact</a>
+                <a href="#" class="text-white hover:text-gold block px-3 py-2 rounded-md text-base font-medium"
+                    onclick="showAllProductsPage(); toggleMobileMenu();">All Fragrances</a>
+                <a href="#admin" class="text-white hover:text-gold block px-3 py-2 rounded-md text-base font-medium"
+                    onclick="showAdminLogin(); toggleMobileMenu();">Admin</a>
             </div>
         </div>
     </nav>
 
     <!-- Shopping Cart Sidebar -->
-    <div id="cart-sidebar" class="cart-sidebar fixed top-0 right-0 h-full w-80 bg-deepblack border-l border-gold/20 z-50 p-6">
+    <div id="cart-sidebar"
+        class="cart-sidebar fixed top-0 right-0 h-full w-80 bg-deepblack border-l border-gold/20 z-50 p-6">
         <div class="flex justify-between items-center mb-6">
             <h3 class="text-xl font-sans font-bold text-gold">Your Cart</h3>
             <button onclick="toggleCart()" class="text-white hover:text-gold">
@@ -177,7 +229,8 @@
                 <span class="text-white">Total:</span>
                 <span id="cart-total" class="text-gold font-bold">Rs. 0</span>
             </div>
-            <button onclick="showCheckoutPage()" class="w-full bg-accentred hover:bg-accentred/90 text-white font-bold py-3 px-4 rounded-full transition-all duration-200">
+            <button onclick="showCheckoutPage()"
+                class="w-full bg-accentred hover:bg-accentred/90 text-white font-bold py-3 px-4 rounded-full transition-all duration-200">
                 Checkout
             </button>
         </div>
@@ -209,30 +262,41 @@
                 <form id="checkout-form" class="space-y-4">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
-                            <label for="customer-name" class="block text-sm font-medium text-white mb-1">Full Name *</label>
-                            <input type="text" id="customer-name" required class="w-full bg-white/5 border border-gold/20 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-gold">
+                            <label for="customer-name" class="block text-sm font-medium text-white mb-1">Full Name
+                                *</label>
+                            <input type="text" id="customer-name" required
+                                class="w-full bg-white/5 border border-gold/20 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-gold">
                         </div>
                         <div>
-                            <label for="customer-phone" class="block text-sm font-medium text-white mb-1">Phone Number *</label>
-                            <input type="tel" id="customer-phone" required class="w-full bg-white/5 border border-gold/20 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-gold">
+                            <label for="customer-phone" class="block text-sm font-medium text-white mb-1">Phone Number
+                                *</label>
+                            <input type="tel" id="customer-phone" required
+                                class="w-full bg-white/5 border border-gold/20 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-gold">
                         </div>
                     </div>
                     <div>
-                        <label for="customer-email" class="block text-sm font-medium text-white mb-1">Email Address</label>
-                        <input type="email" id="customer-email" class="w-full bg-white/5 border border-gold/20 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-gold">
+                        <label for="customer-email" class="block text-sm font-medium text-white mb-1">Email
+                            Address</label>
+                        <input type="email" id="customer-email"
+                            class="w-full bg-white/5 border border-gold/20 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-gold">
                     </div>
                     <div>
-                        <label for="customer-address" class="block text-sm font-medium text-white mb-1">Full Address *</label>
-                        <textarea id="customer-address" required rows="3" class="w-full bg-white/5 border border-gold/20 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-gold"></textarea>
+                        <label for="customer-address" class="block text-sm font-medium text-white mb-1">Full Address
+                            *</label>
+                        <textarea id="customer-address" required rows="3"
+                            class="w-full bg-white/5 border border-gold/20 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-gold"></textarea>
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
                             <label for="customer-city" class="block text-sm font-medium text-white mb-1">City *</label>
-                            <input type="text" id="customer-city" required class="w-full bg-white/5 border border-gold/20 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-gold">
+                            <input type="text" id="customer-city" required
+                                class="w-full bg-white/5 border border-gold/20 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-gold">
                         </div>
                         <div>
-                            <label for="customer-zip" class="block text-sm font-medium text-white mb-1">ZIP Code *</label>
-                            <input type="text" id="customer-zip" required class="w-full bg-white/5 border border-gold/20 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-gold">
+                            <label for="customer-zip" class="block text-sm font-medium text-white mb-1">ZIP Code
+                                *</label>
+                            <input type="text" id="customer-zip" required
+                                class="w-full bg-white/5 border border-gold/20 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-gold">
                         </div>
                     </div>
 
@@ -240,11 +304,13 @@
                         <h3 class="text-xl font-sans font-bold text-gold mb-4">Payment Method</h3>
                         <div class="space-y-3">
                             <label class="flex items-center space-x-3 cursor-pointer">
-                                <input type="radio" name="payment-method" value="easypaisa" class="text-gold focus:ring-gold" checked>
+                                <input type="radio" name="payment-method" value="easypaisa"
+                                    class="text-gold focus:ring-gold" checked>
                                 <span class="text-white">EasyPaisa</span>
                             </label>
                             <label class="flex items-center space-x-3 cursor-pointer">
-                                <input type="radio" name="payment-method" value="jazzcash" class="text-gold focus:ring-gold">
+                                <input type="radio" name="payment-method" value="jazzcash"
+                                    class="text-gold focus:ring-gold">
                                 <span class="text-white">JazzCash</span>
                             </label>
                             <label class="flex items-center space-x-3 cursor-pointer">
@@ -258,21 +324,25 @@
                         <h3 class="text-xl font-sans font-bold text-gold mb-4">EasyPaisa/JazzCash Details</h3>
                         <div class="bg-gold/10 border border-gold/20 p-4 rounded-lg">
                             <p class="text-gold font-bold mb-2">Please send payment to:</p>
-                            <p class="text-white">Account: +92 349 5587202</p>
-                            <p class="text-white text-sm mt-2">After payment, please share the transaction ID in the notes below.</p>
+                            <p class="text-white">Account: +92 3408153536</p>
+                            <p class="text-white text-sm mt-2">After payment, please share the transaction ID in the
+                                notes below.</p>
                         </div>
                     </div>
 
                     <div>
                         <label for="order-notes" class="block text-sm font-medium text-white mb-1">Order Notes</label>
-                        <textarea id="order-notes" rows="3" placeholder="Any special instructions or transaction ID..." class="w-full bg-white/5 border border-gold/20 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-gold"></textarea>
+                        <textarea id="order-notes" rows="3" placeholder="Any special instructions or transaction ID..."
+                            class="w-full bg-white/5 border border-gold/20 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-gold"></textarea>
                     </div>
 
                     <div class="flex space-x-4 mt-6">
-                        <button type="button" onclick="showHomePage()" class="flex-1 border-2 border-gold text-gold hover:bg-gold hover:text-deepblack font-bold py-3 px-6 rounded-full transition-all duration-300">
+                        <button type="button" onclick="showHomePage()"
+                            class="flex-1 border-2 border-gold text-gold hover:bg-gold hover:text-deepblack font-bold py-3 px-6 rounded-full transition-all duration-300">
                             Cancel
                         </button>
-                        <button type="submit" class="flex-1 bg-accentred hover:bg-accentred/90 text-white font-bold py-3 px-6 rounded-full transition-all duration-300">
+                        <button type="submit"
+                            class="flex-1 bg-accentred hover:bg-accentred/90 text-white font-bold py-3 px-6 rounded-full transition-all duration-300">
                             Place Order
                         </button>
                     </div>
@@ -289,7 +359,7 @@
                 <div class="w-20 h-1 bg-accentred mx-auto"></div>
                 <button onclick="showHomePage()" class="mt-4 text-white hover:text-gold">← Back to Home</button>
             </div>
-            
+
             <div id="all-products-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <!-- Products will be dynamically loaded here -->
             </div>
@@ -312,16 +382,22 @@
                 <div class="bg-white/5 backdrop-blur-sm border border-gold/20 p-6 rounded-lg">
                     <h3 class="text-xl font-sans font-bold text-gold mb-4">Add New Product</h3>
                     <form id="add-product-form" class="space-y-4">
-                        <input type="text" id="product-name" placeholder="Product Name" class="w-full bg-white/5 border border-gold/20 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-gold">
-                        <input type="text" id="product-description" placeholder="Description" class="w-full bg-white/5 border border-gold/20 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-gold">
-                        <input type="number" id="product-price" placeholder="Price" class="w-full bg-white/5 border border-gold/20 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-gold">
-                        <input type="text" id="product-image" placeholder="Image URL" class="w-full bg-white/5 border border-gold/20 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-gold">
-                        <select id="product-badge" class="w-full bg-white/5 border border-gold/20 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-gold">
+                        <input type="text" id="product-name" placeholder="Product Name"
+                            class="w-full bg-white/5 border border-gold/20 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-gold">
+                        <input type="text" id="product-description" placeholder="Description"
+                            class="w-full bg-white/5 border border-gold/20 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-gold">
+                        <input type="number" id="product-price" placeholder="Price"
+                            class="w-full bg-white/5 border border-gold/20 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-gold">
+                        <input type="text" id="product-image" placeholder="Image URL"
+                            class="w-full bg-white/5 border border-gold/20 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-gold">
+                        <select id="product-badge"
+                            class="w-full bg-black/5 border border-gold/20 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-gold">
                             <option value="">No Badge</option>
                             <option value="NEW">NEW</option>
                             <option value="BESTSELLER">BESTSELLER</option>
                         </select>
-                        <button type="submit" class="bg-accentred hover:bg-accentred/90 text-white font-bold py-2 px-4 rounded-full transition-all duration-200">
+                        <button type="submit"
+                            class="bg-accentred hover:bg-accentred/90 text-white font-bold py-2 px-4 rounded-full transition-all duration-200">
                             Add Product
                         </button>
                     </form>
@@ -360,14 +436,17 @@
         <!-- Hero Section -->
         <div class="relative h-screen flex items-center justify-center overflow-hidden">
             <div class="absolute inset-0 z-0">
-                <img src="http://static.photos/black/1200x630/42" class="w-full h-full object-cover" alt="Luxury Fragrance Background">
+                <img src="http://static.photos/black/1200x630/42" class="w-full h-full object-cover"
+                    alt="Luxury Fragrance Background">
                 <div class="absolute inset-0 hero-gradient"></div>
             </div>
             <div class="relative z-10 text-center px-4 sm:px-6 lg:px-8">
                 <h1 class="text-4xl md:text-6xl font-sans font-bold text-gold mb-6">Elevate Your Senses</h1>
-                <p class="text-xl md:text-2xl text-white max-w-3xl mx-auto mb-8">Discover the art of perfumery with our exclusive collection of luxury fragrances</p>
+                <p class="text-xl md:text-2xl text-white max-w-3xl mx-auto mb-8">Discover the art of perfumery with our
+                    exclusive collection of luxury fragrances</p>
                 <div class="mt-10">
-                    <a href="#products" class="bg-accentred hover:bg-accentred/90 text-white font-bold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 inline-flex items-center">
+                    <a href="#products"
+                        class="bg-accentred hover:bg-accentred/90 text-white font-bold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 inline-flex items-center">
                         Explore Collection
                         <i data-feather="arrow-right" class="ml-2"></i>
                     </a>
@@ -385,13 +464,14 @@
                     <h2 class="text-3xl font-sans font-bold text-gold mb-4">Our Signature Fragrances</h2>
                     <div class="w-20 h-1 bg-accentred mx-auto"></div>
                 </div>
-                
+
                 <div id="products-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
                     <!-- Products will be dynamically loaded here -->
                 </div>
 
                 <div class="text-center mt-16">
-                    <button onclick="showAllProductsPage()" class="border-2 border-gold text-gold hover:bg-gold hover:text-deepblack font-bold py-3 px-8 rounded-full transition-all duration-300 inline-flex items-center">
+                    <button onclick="showAllProductsPage()"
+                        class="border-2 border-gold text-gold hover:bg-gold hover:text-deepblack font-bold py-3 px-8 rounded-full transition-all duration-300 inline-flex items-center">
                         View All Fragrances
                         <i data-feather="arrow-right" class="ml-2"></i>
                     </button>
@@ -405,21 +485,28 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex flex-col md:flex-row items-center">
                     <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10">
-                        <img src="http://static.photos/black/640x360/4" class="rounded-lg shadow-xl w-full h-auto" alt="Our Boutique">
+                        <img src="http://static.photos/black/640x360/4" class="rounded-lg shadow-xl w-full h-auto"
+                            alt="Our Boutique">
                     </div>
                     <div class="md:w-1/2">
                         <h2 class="text-3xl font-sans font-bold text-gold mb-6">Our Fragrant Journey</h2>
-                        <p class="text-white/80 mb-6">Founded in 2010, MH Online Khushbo Store has been crafting exquisite fragrances that tell stories and evoke emotions. Our perfumers travel the world to source the finest ingredients, creating scents that are as unique as they are memorable.</p>
-                        <p class="text-white/80 mb-6">Each fragrance in our collection is meticulously crafted using traditional techniques combined with modern innovation. We believe a great perfume should not just be worn, but experienced.</p>
+                        <p class="text-white/80 mb-6">MH Khushbo & online Store has been crafting
+                            exquisite fragrances that tell stories and evoke emotions. Our perfumers travel the world to
+                            source the finest ingredients, creating scents that are as unique as they are memorable.</p>
+                        <p class="text-white/80 mb-6">Each fragrance in our collection is meticulously crafted using
+                            traditional techniques combined with modern innovation. We believe a great perfume should
+                            not just be worn, but experienced.</p>
                         <div class="flex items-center">
                             <div class="mr-4">
-                                <div class="flex items-center justify-center w-16 h-16 rounded-full bg-gold/10 border border-gold/20">
+                                <div
+                                    class="flex items-center justify-center w-16 h-16 rounded-full bg-gold/10 border border-gold/20">
                                     <i data-feather="award" class="text-gold h-8 w-8"></i>
                                 </div>
                             </div>
                             <div>
                                 <h4 class="text-gold font-bold">Premium Quality</h4>
-                                <p class="text-white/70 text-sm">Only the finest ingredients from sustainable sources</p>
+                                <p class="text-white/70 text-sm">Only the finest ingredients from sustainable sources
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -434,13 +521,14 @@
                     <h2 class="text-3xl font-sans font-bold text-gold mb-4">Fragrance Connoisseurs Speak</h2>
                     <div class="w-20 h-1 bg-accentred mx-auto"></div>
                 </div>
-                
+
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <!-- Testimonial 1 -->
                     <div class="bg-white/5 backdrop-blur-sm border border-gold/20 p-6 rounded-lg">
                         <div class="flex items-center mb-4">
                             <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
-                                <img src="http://static.photos/people/200x200/1" class="w-full h-full object-cover" alt="Sarah J.">
+                                <img src="http://static.photos/people/200x200/1" class="w-full h-full object-cover"
+                                    alt="Sarah J.">
                             </div>
                             <div>
                                 <h4 class="text-gold font-bold">Sarah J.</h4>
@@ -453,14 +541,16 @@
                                 </div>
                             </div>
                         </div>
-                        <p class="text-white/80 italic">"Amber Noir is my signature scent. I receive compliments every time I wear it. The sophistication of this fragrance is unmatched."</p>
+                        <p class="text-white/80 italic">"Amber Noir is my signature scent. I receive compliments every
+                            time I wear it. The sophistication of this fragrance is unmatched."</p>
                     </div>
 
                     <!-- Testimonial 2 -->
                     <div class="bg-white/5 backdrop-blur-sm border border-gold/20 p-6 rounded-lg">
                         <div class="flex items-center mb-4">
                             <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
-                                <img src="http://static.photos/people/200x200/2" class="w-full h-full object-cover" alt="Michael T.">
+                                <img src="http://static.photos/people/200x200/2" class="w-full h-full object-cover"
+                                    alt="Michael T.">
                             </div>
                             <div>
                                 <h4 class="text-gold font-bold">Michael T.</h4>
@@ -473,14 +563,16 @@
                                 </div>
                             </div>
                         </div>
-                        <p class="text-white/80 italic">"The longevity of Royal Oud is incredible. Two sprays last all day and the drydown is simply magical. Worth every penny."</p>
+                        <p class="text-white/80 italic">"The longevity of Royal Oud is incredible. Two sprays last all
+                            day and the drydown is simply magical. Worth every penny."</p>
                     </div>
 
                     <!-- Testimonial 3 -->
                     <div class="bg-white/5 backdrop-blur-sm border border-gold/20 p-6 rounded-lg">
                         <div class="flex items-center mb-4">
                             <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
-                                <img src="http://static.photos/people/200x200/3" class="w-full h-full object-cover" alt="Aisha K.">
+                                <img src="http://static.photos/people/200x200/3" class="w-full h-full object-cover"
+                                    alt="Aisha K.">
                             </div>
                             <div>
                                 <h4 class="text-gold font-bold">Aisha K.</h4>
@@ -493,7 +585,9 @@
                                 </div>
                             </div>
                         </div>
-                        <p class="text-white/80 italic">"Citrus Zest is my go-to summer fragrance. It's fresh, invigorating and unlike any other citrus scent I've tried. The ginger adds such a unique twist!"</p>
+                        <p class="text-white/80 italic">"Citrus Zest is my go-to summer fragrance. It's fresh,
+                            invigorating and unlike any other citrus scent I've tried. The ginger adds such a unique
+                            twist!"</p>
                     </div>
                 </div>
             </div>
@@ -506,7 +600,7 @@
                     <h2 class="text-3xl font-sans font-bold text-gold mb-4">Get In Touch</h2>
                     <div class="w-20 h-1 bg-accentred mx-auto"></div>
                 </div>
-                
+
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
                     <div>
                         <h3 class="text-xl font-sans font-bold text-gold mb-6">Contact Information</h3>
@@ -524,7 +618,7 @@
                                     <i data-feather="phone" class="text-gold h-5 w-5"></i>
                                 </div>
                                 <div class="ml-3">
-                                    <p class="text-white/80">+92 349 5587</p>
+                                    <p class="text-white/80">+92 3408153536</p>
                                 </div>
                             </div>
                             <div class="flex items-start">
@@ -536,7 +630,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="mt-8">
                             <h4 class="text-lg font-sans font-bold text-gold mb-4">Follow Us</h4>
                             <div class="flex space-x-4">
@@ -552,23 +646,28 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div>
                         <h3 class="text-xl font-sans font-bold text-gold mb-6">Send Us a Message</h3>
                         <form class="space-y-4">
                             <div>
                                 <label for="name" class="block text-sm font-medium text-white mb-1">Your Name</label>
-                                <input type="text" id="name" class="w-full bg-white/5 border border-gold/20 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-gold">
+                                <input type="text" id="name"
+                                    class="w-full bg-white/5 border border-gold/20 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-gold">
                             </div>
                             <div>
-                                <label for="email" class="block text-sm font-medium text-white mb-1">Email Address</label>
-                                <input type="email" id="email" class="w-full bg-white/5 border border-gold/20 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-gold">
+                                <label for="email" class="block text-sm font-medium text-white mb-1">Email
+                                    Address</label>
+                                <input type="email" id="email"
+                                    class="w-full bg-white/5 border border-gold/20 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-gold">
                             </div>
                             <div>
                                 <label for="message" class="block text-sm font-medium text-white mb-1">Message</label>
-                                <textarea id="message" rows="4" class="w-full bg-white/5 border border-gold/20 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-gold"></textarea>
+                                <textarea id="message" rows="4"
+                                    class="w-full bg-white/5 border border-gold/20 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-gold"></textarea>
                             </div>
-                            <button type="submit" class="bg-accentred hover:bg-accentred/90 text-white font-bold py-3 px-6 rounded-full transition-all duration-300">
+                            <button type="submit"
+                                class="bg-accentred hover:bg-accentred/90 text-white font-bold py-3 px-6 rounded-full transition-all duration-300">
                                 Send Message
                             </button>
                         </form>
@@ -581,10 +680,13 @@
         <section class="py-16 bg-accentred">
             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                 <h2 class="text-2xl font-sans font-bold text-white mb-4">Join Our Fragrance Community</h2>
-                <p class="text-white/90 mb-6">Subscribe to receive updates on new arrivals, exclusive offers, and fragrance tips</p>
+                <p class="text-white/90 mb-6">Subscribe to receive updates on new arrivals, exclusive offers, and
+                    fragrance tips</p>
                 <form class="max-w-md mx-auto flex">
-                    <input type="email" placeholder="Your email address" class="flex-grow px-4 py-3 rounded-l-full focus:outline-none text-deepblack">
-                    <button type="submit" class="bg-gold hover:bg-gold/90 text-deepblack font-bold px-6 py-3 rounded-r-full transition-all duration-300">
+                    <input type="email" placeholder="Your email address"
+                        class="flex-grow px-4 py-3 rounded-l-full focus:outline-none text-deepblack">
+                    <button type="submit"
+                        class="bg-gold hover:bg-gold/90 text-deepblack font-bold px-6 py-3 rounded-r-full transition-all duration-300">
                         Subscribe
                     </button>
                 </form>
@@ -596,42 +698,69 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                     <div>
-                        <h3 class="text-lg font-sans font-bold text-gold mb-4">MH Khushbo</h3>
-                        <p class="text-white/70 text-sm">Luxury fragrances crafted with passion and precision. Experience the art of perfumery.</p>
+                        <h3 class="text-lg font-sans font-bold text-gold mb-4">MH Khushbo & online store</h3>
+                        <p class="text-white/70 text-sm">Luxury fragrances crafted with passion and precision.
+                            Experience the art of perfumery.</p>
                     </div>
                     <div>
                         <h4 class="text-gold font-bold mb-4">Shop</h4>
                         <ul class="space-y-2">
-                            <li><a href="#" class="text-white/70 hover:text-gold text-sm transition-colors duration-200" onclick="showAllProductsPage()">All Fragrances</a></li>
-                            <li><a href="#" class="text-white/70 hover:text-gold text-sm transition-colors duration-200">New Arrivals</a></li>
-                            <li><a href="#" class="text-white/70 hover:text-gold text-sm transition-colors duration-200">Best Sellers</a></li>
-                            <li><a href="#" class="text-white/70 hover:text-gold text-sm transition-colors duration-200">Gift Sets</a></li>
+                            <li><a href="#" class="text-white/70 hover:text-gold text-sm transition-colors duration-200"
+                                    onclick="showAllProductsPage()">All Fragrances</a></li>
+                            <li><a href="#"
+                                    class="text-white/70 hover:text-gold text-sm transition-colors duration-200">New
+                                    Arrivals</a></li>
+                            <li><a href="#"
+                                    class="text-white/70 hover:text-gold text-sm transition-colors duration-200">Best
+                                    Sellers</a></li>
+                            <li><a href="#"
+                                    class="text-white/70 hover:text-gold text-sm transition-colors duration-200">Gift
+                                    Sets</a></li>
                         </ul>
                     </div>
                     <div>
                         <h4 class="text-gold font-bold mb-4">Company</h4>
                         <ul class="space-y-2">
-                            <li><a href="#" class="text-white/70 hover:text-gold text-sm transition-colors duration-200">About Us</a></li>
-                            <li><a href="#" class="text-white/70 hover:text-gold text-sm transition-colors duration-200">Our Story</a></li>
-                            <li><a href="#" class="text-white/70 hover:text-gold text-sm transition-colors duration-200">Blog</a></li>
-                            <li><a href="#" class="text-white/70 hover:text-gold text-sm transition-colors duration-200">Careers</a></li>
+                            <li><a href="#"
+                                    class="text-white/70 hover:text-gold text-sm transition-colors duration-200">About
+                                    Us</a></li>
+                            <li><a href="#"
+                                    class="text-white/70 hover:text-gold text-sm transition-colors duration-200">Our
+                                    Story</a></li>
+                            <li><a href="#"
+                                    class="text-white/70 hover:text-gold text-sm transition-colors duration-200">Blog</a>
+                            </li>
+                            <li><a href="#"
+                                    class="text-white/70 hover:text-gold text-sm transition-colors duration-200">Careers</a>
+                            </li>
                         </ul>
                     </div>
                     <div>
                         <h4 class="text-gold font-bold mb-4">Support</h4>
                         <ul class="space-y-2">
-                            <li><a href="#" class="text-white/70 hover:text-gold text-sm transition-colors duration-200">Contact Us</a></li>
-                            <li><a href="#" class="text-white/70 hover:text-gold text-sm transition-colors duration-200">FAQs</a></li>
-                            <li><a href="#" class="text-white/70 hover:text-gold text-sm transition-colors duration-200">Shipping Policy</a></li>
-                            <li><a href="#" class="text-white/70 hover:text-gold text-sm transition-colors duration-200">Returns & Exchanges</a></li>
+                            <li><a href="#"
+                                    class="text-white/70 hover:text-gold text-sm transition-colors duration-200">Contact
+                                    Us</a></li>
+                            <li><a href="#"
+                                    class="text-white/70 hover:text-gold text-sm transition-colors duration-200">FAQs</a>
+                            </li>
+                            <li><a href="#"
+                                    class="text-white/70 hover:text-gold text-sm transition-colors duration-200">Shipping
+                                    Policy</a></li>
+                            <li><a href="#"
+                                    class="text-white/70 hover:text-gold text-sm transition-colors duration-200">Returns
+                                    & Exchanges</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="border-t border-gold/10 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
-                    <p class="text-white/60 text-sm mb-4 md:mb-0">© 2023 MH Online Khushbo Store. All rights reserved.</p>
+                    <p class="text-white/60 text-sm mb-4 md:mb-0">© 2023 MH Online Khushbo Store. All rights reserved.
+                    </p>
                     <div class="flex space-x-6">
-                        <a href="#" class="text-white/60 hover:text-gold transition-colors duration-200 text-sm">Privacy Policy</a>
-                        <a href="#" class="text-white/60 hover:text-gold transition-colors duration-200 text-sm">Terms of Service</a>
+                        <a href="#" class="text-white/60 hover:text-gold transition-colors duration-200 text-sm">Privacy
+                            Policy</a>
+                        <a href="#" class="text-white/60 hover:text-gold transition-colors duration-200 text-sm">Terms
+                            of Service</a>
                     </div>
                 </div>
             </div>
@@ -639,18 +768,19 @@
     </div>
 
     <!-- WhatsApp Floating Button -->
-    <a href="https://wa.me/+923405979168" class="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white rounded-full p-4 shadow-lg transition-all duration-300 transform hover:scale-110 z-50">
+    <a href="https://wa.me/+923408153536"
+        class="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white rounded-full p-4 shadow-lg transition-all duration-300 transform hover:scale-110 z-50">
         <i data-feather="message-circle" class="h-6 w-6"></i>
     </a>
 
     <script>
         feather.replace();
-        
+
         // Admin authentication
         let isAdminLoggedIn = false;
         const ADMIN_CREDENTIALS = {
-            username: "admin",
-            password: "admin123"
+            username: "hammad",
+            password: "hammad1122"
         };
 
         // Mobile menu functionality
@@ -660,10 +790,10 @@
         }
 
         // Close mobile menu when clicking outside
-        document.addEventListener('click', function(event) {
+        document.addEventListener('click', function (event) {
             const mobileMenu = document.getElementById('mobile-menu');
             const hamburgerButton = document.querySelector('button[onclick="toggleMobileMenu()"]');
-            
+
             if (!mobileMenu.contains(event.target) && !hamburgerButton.contains(event.target)) {
                 mobileMenu.classList.remove('active');
             }
@@ -745,7 +875,7 @@
         }
 
         // Admin login form submission
-        document.getElementById('admin-login-form').addEventListener('submit', function(e) {
+        document.getElementById('admin-login-form').addEventListener('submit', function (e) {
             e.preventDefault();
             const username = document.getElementById('admin-username').value;
             const password = document.getElementById('admin-password').value;
@@ -894,7 +1024,7 @@
             notification.className = 'fixed top-4 right-4 bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg z-50';
             notification.textContent = `${productName} added to cart!`;
             document.body.appendChild(notification);
-            
+
             setTimeout(() => {
                 notification.remove();
             }, 3000);
@@ -913,7 +1043,7 @@
         function updateCartDisplay() {
             const cartItems = document.getElementById('cart-items');
             const cartTotal = document.getElementById('cart-total');
-            
+
             if (cart.length === 0) {
                 cartItems.innerHTML = '<p class="text-white/70 text-center">Your cart is empty</p>';
                 cartTotal.textContent = 'Rs. 0';
@@ -951,7 +1081,7 @@
         function updateCheckoutDisplay() {
             const checkoutItems = document.getElementById('checkout-items');
             const checkoutTotal = document.getElementById('checkout-total');
-            
+
             checkoutItems.innerHTML = cart.map(item => `
                 <div class="flex items-center justify-between border-b border-gold/10 pb-4">
                     <div class="flex items-center">
@@ -966,22 +1096,22 @@
             `).join('');
 
             const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-           checkoutTotal.textContent = `Rs. ${total}`;
+            checkoutTotal.textContent = `Rs. ${total}`;
         }
 
         // WhatsApp order function
         function sendOrderToWhatsApp(orderData) {
-            const phoneNumber = "923495587202";
+            const phoneNumber = "923408153536";
             const message = `*NEW ORDER RECEIVED*%0A%0A*Customer Details:*%0AName: ${orderData.name}%0APhone: ${orderData.phone}%0AEmail: ${orderData.email}%0AAddress: ${orderData.address}%0ACity: ${orderData.city}%0AZIP: ${orderData.zip}%0A%0A*Order Details:*%0A${orderData.items}%0A%0A*Payment Method:* ${orderData.paymentMethod}%0A*Total Amount:* Rs. ${orderData.total}%0A%0A*Notes:* ${orderData.notes}`;
-            
+
             const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
             window.open(whatsappUrl, '_blank');
         }
 
         // Checkout form submission
-        document.getElementById('checkout-form').addEventListener('submit', function(e) {
+        document.getElementById('checkout-form').addEventListener('submit', function (e) {
             e.preventDefault();
-            
+
             const orderData = {
                 name: document.getElementById('customer-name').value,
                 phone: document.getElementById('customer-phone').value,
@@ -1000,7 +1130,7 @@
 
             // Show success message
             alert('Order placed successfully! You will be redirected to WhatsApp to confirm your order.');
-            
+
             // Clear cart and return to home
             cart = [];
             updateCartCount();
@@ -1029,11 +1159,11 @@
         }
 
         // Add new product
-        document.getElementById('add-product-form').addEventListener('submit', function(e) {
+        document.getElementById('add-product-form').addEventListener('submit', function (e) {
             e.preventDefault();
             const name = document.getElementById('product-name').value;
             const description = document.getElementById('product-description').value;
-            const price = parseFloat(document.getElementById('product-price').value);
+            const price = document.getElementById('product-price').value;
             const image = document.getElementById('product-image').value;
             const badge = document.getElementById('product-badge').value;
 
@@ -1053,6 +1183,9 @@
                 this.reset();
                 alert('Product added successfully!');
             }
+            else {
+                alert('Please fill in all fields!');
+            }
         });
 
         // Delete product
@@ -1066,9 +1199,9 @@
         }
 
         // Initialize when page loads
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             initializeStore();
-            
+
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -1083,4 +1216,5 @@
         });
     </script>
 </body>
+
 </html>
